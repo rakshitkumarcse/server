@@ -9,7 +9,7 @@ SET DEBUG_SYNC = 'now WAIT_FOR go';
 SELECT DISTINCT object_name FROM performance_schema.events_waits_history_long
 WHERE event_name LIKE '%wait%io%file%innodb%innodb_temp_file%';
 object_name
-MYSQLTEST_VARDIR/tmp/Innodb Merge Temp File
+tmp/Innodb Merge Temp File
 SET DEBUG_SYNC = 'now SIGNAL gone';
 SET DEBUG_SYNC = 'RESET';
 DROP TABLE t1;

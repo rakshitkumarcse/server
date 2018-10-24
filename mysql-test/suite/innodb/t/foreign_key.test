@@ -24,6 +24,10 @@ LOCK TABLE staff WRITE;
 UNLOCK TABLES;
 DROP TABLES staff, store;
 
+--disable_query_log
+call mtr.add_suppression("InnoDB: Error; possible reasons:");
+--enable_query_log
+
 CREATE TABLE t1 (a INT PRIMARY KEY) ENGINE=InnoDB;
 CREATE DATABASE best;
 CREATE TABLE t3 (a INT PRIMARY KEY,
@@ -34,3 +38,4 @@ FOREIGN KEY (a) REFERENCES t1(a)) ENGINE=InnoDB;
 RENAME TABLE best.t2 TO test.t2;
 SHOW CREATE TABLE best.t2;
 DROP TABLE best.t2,t3,t1;
+DROP DATABASE best;
